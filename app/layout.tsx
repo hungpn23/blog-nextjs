@@ -3,7 +3,7 @@ import { Inconsolata } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layouts/header";
-import { Content } from "@/components/layouts/content";
+import { ContentContainer } from "@/components/layouts/content-container";
 import { Footer } from "@/components/layouts/footer";
 
 const inconsolata = Inconsolata({
@@ -33,7 +33,7 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-grow">
-              <Content>{children}</Content>
+              <ContentContainer>{children}</ContentContainer>
             </main>
             <Footer />
           </div>

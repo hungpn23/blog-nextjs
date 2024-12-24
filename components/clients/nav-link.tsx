@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -6,13 +8,13 @@ interface NavLinkProps {
   children: React.ReactNode;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ path, children }) => {
+export const NavLink: React.FC<NavLinkProps> = ({ path, children }) => {
   const pathname = usePathname();
 
   return (
     <Link
       href={path}
-      className={`text-sm hover:underline hover:underline-offset-4 ${
+      className={`text-base hover:underline hover:underline-offset-4 ${
         pathname === path ? "underline underline-offset-4" : ""
       }`}
     >
@@ -20,5 +22,3 @@ const NavLink: React.FC<NavLinkProps> = ({ path, children }) => {
     </Link>
   );
 };
-
-export default NavLink;

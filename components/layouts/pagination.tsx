@@ -14,8 +14,8 @@ export function Pagination({
   baseUrl,
 }: PaginationProps) {
   return (
-    <div className="flex items-center justify-center space-x-2 py-8">
-      <Button variant="outline" size="icon" asChild disabled={currentPage <= 1}>
+    <div className="flex items-center justify-center py-8">
+      <Button variant="ghost" size="icon" asChild disabled={currentPage <= 1}>
         <Link
           href={`${baseUrl}?page=${currentPage - 1}`}
           aria-label="Previous page"
@@ -23,11 +23,9 @@ export function Pagination({
           <ChevronLeft className="h-4 w-4" />
         </Link>
       </Button>
-      <div className="text-sm">
-        Page {currentPage} of {totalPages}
-      </div>
+      Page {currentPage} of {totalPages}
       <Button
-        variant="outline"
+        variant="ghost"
         size="icon"
         asChild
         disabled={currentPage >= totalPages}

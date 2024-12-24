@@ -1,9 +1,10 @@
-import { TagFilter } from "@/components/tag-filter";
-import { IPost, Post } from "@/components/elements/post";
+import { TagFilter } from "@/components/clients/tag-filter";
+import { PostProps, Post } from "@/components/elements/post";
 import { Pagination } from "@/components/layouts/pagination";
+import { PageBody } from "@/components/layouts/page-body";
 
 // This would typically come from your data source
-const posts: IPost[] = [
+const posts: PostProps[] = [
   {
     slug: "webpack-what-is-a-chunk",
     title: "Webpack: what is a chunk?",
@@ -78,14 +79,14 @@ export default function BlogPage({
   );
 
   return (
-    <div className="py-16 sm:py-24">
+    <PageBody>
       <TagFilter tags={tagCounts} />
-      <div className="divide-border">
+      <div>
         {currentPagePosts.map((post) => (
           <Post key={post.slug} post={post} />
         ))}
       </div>
       <Pagination currentPage={page} totalPages={totalPages} baseUrl="/blog" />
-    </div>
+    </PageBody>
   );
 }

@@ -5,7 +5,7 @@ interface ContentProps {
   className?: string;
 }
 
-export function Content({ children, className }: ContentProps) {
+export function ContentContainer({ children, className }: ContentProps) {
   return (
     <div
       className={cn(

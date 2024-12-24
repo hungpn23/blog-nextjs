@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "/public/logo.jpg";
+import { PageBody } from "@/components/layouts/page-body";
 
 export default function Home() {
   return (
-    <div className="py-16 sm:py-24">
+    <PageBody>
       <div className="mb-12 flex flex-col items-center gap-4">
         <Image
           src={logo}
@@ -64,14 +65,14 @@ export default function Home() {
             ones would be via{" "}
             <Link
               href="mailto:example@email.com"
-              className="text-primary hover:underline hover:underline-offset-4"
+              className="text-link hover:underline hover:underline-offset-4"
             >
               email
             </Link>{" "}
             or{" "}
             <Link
               href="https://linkedin.com"
-              className="text-primary hover:underline hover:underline-offset-4"
+              className="text-link hover:underline hover:underline-offset-4"
             >
               LinkedIn
             </Link>
@@ -113,6 +114,6 @@ export default function Home() {
           </ul>
         </section>
       </div>
-    </div>
+    </PageBody>
   );
 }
