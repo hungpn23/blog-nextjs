@@ -1,101 +1,118 @@
 import Image from "next/image";
+import Link from "next/link";
+import logo from "/public/logo.jpg";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div className="py-16 sm:py-24">
+      <div className="mb-12 flex flex-col items-center gap-4">
         <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          src={logo}
+          alt="Profile photo"
+          width={200}
+          height={200}
+          className="rounded-md"
           priority
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <h1 className="text-center text-3xl font-semibold">Phạm Ngọc Hùng</h1>
+        <p className="text-center text-primary">Backend Developer</p>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <div className="space-y-12">
+        <section>
+          <h2 className="mb-4 text-2xl font-semibold">Skill set</h2>
+          <p className="mb-4">
+            I genuinely find everything about programming interesting. I
+            specialize in <span className="text-primary">Web Development </span>
+            and I love solving problems across the entire stack.
+          </p>
+          <p className="mb-4">Over the years, I have worked with:</p>
+          <ul className="list-inside list-disc space-y-1">
+            <li>
+              <span className="text-primary">JavaScript, </span>
+              <span className="text-primary">TypeScript, </span>
+              <span className="text-primary">Angular, </span>
+              <span className="text-primary">React, </span>
+              <span className="text-primary">Next.js, </span>
+              <span className="text-primary">Vue.js, </span>
+              <span className="text-primary">RxJS, </span>
+              <span className="text-primary">webpack</span>
+            </li>
+            <li>
+              <span className="text-primary">Node.js, </span>
+              <span className="text-primary">NestJS, </span>
+              <span className="text-primary">SQL, </span>
+              <span className="text-primary">Docker</span>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 className="mb-2 text-xl font-semibold">
+            What I'd like to get more acquainted with in the future:
+          </h3>
+          <ul className="list-inside list-disc space-y-1">
+            <li>Cloud computing</li>
+            <li>Golang</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="mb-4 text-2xl font-semibold">Contact</h2>
+          <p>
+            I guess there could be many ways to do that, but the most common
+            ones would be via{" "}
+            <Link
+              href="mailto:example@email.com"
+              className="text-primary hover:underline hover:underline-offset-4"
+            >
+              email
+            </Link>{" "}
+            or{" "}
+            <Link
+              href="https://linkedin.com"
+              className="text-primary hover:underline hover:underline-offset-4"
+            >
+              LinkedIn
+            </Link>
+            .
+          </p>
+        </section>
+
+        <section>
+          <h2 className="mb-4 text-2xl font-semibold">
+            A few other things about me
+          </h2>
+          <ul className="list-inside list-disc space-y-4">
+            <li>
+              I like to go beyond the abstractions offered by the tools I'm
+              using; hence, exploring the source code is something that I find
+              fun and fulfilling
+            </li>
+            <li>
+              I love sharing my knowledge with other developers; the ways I'm
+              currently doing that is via{" "}
+              <Link
+                href="https://youtube.com"
+                className="text-primary hover:underline"
+              >
+                YouTube
+              </Link>
+              ,{" "}
+              <Link
+                href="https://stackoverflow.com"
+                className="text-primary hover:underline"
+              >
+                Stack Overflow
+              </Link>{" "}
+              and{" "}
+              <Link href="/blog" className="text-primary hover:underline">
+                writing articles
+              </Link>
+            </li>
+          </ul>
+        </section>
+      </div>
     </div>
   );
 }
