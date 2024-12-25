@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layouts/header";
 import { ContentContainer } from "@/components/layouts/content-container";
 import { Footer } from "@/components/layouts/footer";
+import { cn } from "@/lib/utils";
 
 const inconsolata = Inconsolata({
   subsets: ["vietnamese"],
@@ -22,7 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inconsolata.className}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn("text-lg", inconsolata.className)}
+    >
       <body className="min-h-screen bg-background antialiased">
         <ThemeProvider
           attribute="class"

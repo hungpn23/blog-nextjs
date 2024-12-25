@@ -14,7 +14,7 @@ export function Post({ post }: { post: PostProps }) {
     <article className="border-b border-dashed border-gray-500 py-4 first:pt-0 last:border-none">
       <Link
         href={`/blog/${post.slug}`}
-        className="text-link text-xl font-semibold hover:underline hover:underline-offset-4"
+        className="text-xl font-semibold text-link hover:underline hover:underline-offset-4"
       >
         {post.title}
       </Link>
