@@ -1,32 +1,41 @@
-import { Github, Youtube, FileText } from "lucide-react";
+import { Github, Youtube, FileText, LogIn } from "lucide-react";
 import { NavIcon } from "../elements/nav-icon";
-import { NavLink } from "../clients/nav-link";
+import { NavLink } from "../client-components/nav-link";
 import { Separator } from "../elements/separator";
-import { ToggleTheme } from "../clients/toggle-theme";
+import { ToggleTheme } from "../client-components/toggle-theme";
+import { LoginBtn } from "../elements/login-btn";
 
 export function MobileNav() {
   return (
     <div className="flex h-full flex-col pt-6">
       <nav className="flex flex-col items-center space-y-8">
-        <NavLink path="/blog">Blog</NavLink>
-        <NavLink path="/projects">Projects</NavLink>
+        <NavLink className="mr-0" href="/blog">
+          Blog
+        </NavLink>
+        <NavLink className="mr-0 last:mr-0" href="/projects">
+          Projects
+        </NavLink>
 
         <div className="flex flex-col items-center space-y-6">
           <Separator direction="horizontal" />
 
-          <NavIcon href="#">
+          <NavIcon>
             <Github className="h-4 w-4" />
           </NavIcon>
 
-          <NavIcon href="#">
+          <NavIcon>
             <FileText className="h-4 w-4" />
           </NavIcon>
 
-          <NavIcon href="#">
+          <NavIcon>
             <Youtube className="h-4 w-4" />
           </NavIcon>
 
           <Separator direction="horizontal" />
+
+          <LoginBtn>
+            <LogIn className="h-4 w-4" />
+          </LoginBtn>
 
           <ToggleTheme />
         </div>

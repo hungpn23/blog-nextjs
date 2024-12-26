@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { Github, Youtube, FileText, LogIn } from "lucide-react";
-import { NavLink } from "../clients/nav-link";
+import { NavLink } from "../client-components/nav-link";
 import { ContentContainer } from "./content-container";
 import { NavIcon } from "../elements/nav-icon";
 import { MobileMenu } from "./mobile-menu";
 import { Separator } from "../elements/separator";
-import { ToggleTheme } from "../clients/toggle-theme";
+import { ToggleTheme } from "../client-components/toggle-theme";
+import { LoginBtn } from "../elements/login-btn";
 
 export function Header() {
   return (
@@ -13,27 +14,27 @@ export function Header() {
       <ContentContainer className="flex h-12 max-w-5xl items-center justify-between">
         <Link href="/" className="text-lg">
           phamngochung
-          <span className="text-[hsl(222,75%,55%)]">.dev</span>
+          <span className="text-link">.dev</span>
         </Link>
 
         <nav className="hidden items-center md:flex">
           <div className="flex">
-            <NavLink path="/blog">Blog</NavLink>
-            <NavLink path="/projects">Projects</NavLink>
+            <NavLink href="/blog">Blog</NavLink>
+            <NavLink href="/projects">Projects</NavLink>
           </div>
 
           <div className="flex items-center gap-2">
             <Separator />
 
-            <NavIcon href="#">
+            <NavIcon>
               <Github className="h-4 w-4" />
             </NavIcon>
 
-            <NavIcon href="#">
+            <NavIcon>
               <FileText className="h-4 w-4" />
             </NavIcon>
 
-            <NavIcon href="#">
+            <NavIcon>
               <Youtube className="h-4 w-4" />
             </NavIcon>
 
@@ -41,9 +42,9 @@ export function Header() {
           </div>
 
           <div className="flex">
-            <NavIcon href="/login" className="mr-2">
+            <LoginBtn className="mr-2">
               <LogIn className="h-4 w-4" />
-            </NavIcon>
+            </LoginBtn>
 
             <ToggleTheme />
           </div>

@@ -51,6 +51,7 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
         link: "hsl(222, 75%, 54%)",
+        nodejs: "hsl(112 38.5% 35.7%)",
       },
       borderRadius: {
         lg: "var(--radius)",

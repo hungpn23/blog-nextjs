@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "/public/logo.jpg";
 import { PageBody } from "@/components/layouts/page-body";
 
 export default function Home() {
@@ -8,7 +7,7 @@ export default function Home() {
     <PageBody>
       <div className="mb-12 flex flex-col items-center gap-4">
         <Image
-          src={logo}
+          src="/logo.jpg"
           alt="Profile photo"
           width={200}
           height={200}
@@ -21,29 +20,40 @@ export default function Home() {
 
       <div className="space-y-12">
         <section>
-          <h2 className="mb-4 text-2xl font-semibold">Skill set</h2>
           <p className="mb-4">
             I genuinely find everything about programming interesting. I
-            specialize in <span className="text-primary">Web Development </span>
-            and I love solving problems across the entire stack.
+            specialize in{" "}
+            <span className="text-primary">Backend Development </span>
+            and I enjoy building efficient and scalable web applications using
+            <span className="text-nodejs"> Node.js</span>
           </p>
+
+          <h2 className="mb-4 text-2xl font-semibold">Skill set</h2>
+
           <p className="mb-4">Over the years, I have worked with:</p>
+
           <ul className="list-inside list-disc space-y-1">
             <li>
-              <span className="text-primary">JavaScript, </span>
-              <span className="text-primary">TypeScript, </span>
-              <span className="text-primary">Angular, </span>
-              <span className="text-primary">React, </span>
-              <span className="text-primary">Next.js, </span>
-              <span className="text-primary">Vue.js, </span>
-              <span className="text-primary">RxJS, </span>
-              <span className="text-primary">webpack</span>
+              <em>Languagues: </em>
+
+              <span className="text-primary">JavaScript, TypeScript</span>
             </li>
             <li>
-              <span className="text-primary">Node.js, </span>
-              <span className="text-primary">NestJS, </span>
-              <span className="text-primary">SQL, </span>
-              <span className="text-primary">Docker</span>
+              <em>Libraries & frameworks: </em>
+
+              <span className="text-primary">Nest.js, Next.js</span>
+            </li>
+            <li>
+              <em>Databases: </em>
+              <span className="text-primary">MySQL, Redis</span>
+            </li>
+            <li>
+              <em>Tools: </em>
+              <span className="text-primary">Docker, Git (Github)</span>
+            </li>
+            <li>
+              <em>Cloud services: </em>
+              <span className="text-primary">Cloudinary, S3, EC2</span>
             </li>
           </ul>
         </section>
@@ -53,8 +63,8 @@ export default function Home() {
             What I'd like to get more acquainted with in the future:
           </h3>
           <ul className="list-inside list-disc space-y-1">
-            <li>Cloud computing</li>
-            <li>Golang</li>
+            <li>Java (Spring), Golang</li>
+            <li>DevOps</li>
           </ul>
         </section>
 
@@ -64,17 +74,17 @@ export default function Home() {
             I guess there could be many ways to do that, but the most common
             ones would be via{" "}
             <Link
-              href="mailto:example@email.com"
+              href="#"
               className="text-link hover:underline hover:underline-offset-4"
             >
               email
             </Link>{" "}
             or{" "}
             <Link
-              href="https://linkedin.com"
+              href="#"
               className="text-link hover:underline hover:underline-offset-4"
             >
-              LinkedIn
+              Telegram
             </Link>
             .
           </p>

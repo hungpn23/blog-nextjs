@@ -1,20 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { usePathname } from "next/navigation";
 
-export function NavIcon({
-  href = "",
-  target = "_self",
+export function LoginBtn({
   className,
   children,
 }: {
-  href?: string;
-  target?: "_blank" | "_self" | "_parent" | "_top";
   className?: string;
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
   return (
     <Button variant="ghost" size="icon" className={className} asChild>
-      <Link href={href} target={target}>
+      <Link href="/login" className={pathname === "/login" ? "hidden" : ""}>
         {children}
       </Link>
     </Button>

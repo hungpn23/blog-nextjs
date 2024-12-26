@@ -1,15 +1,8 @@
 import Link from "next/link";
+import { Tag } from "./tag";
+import { IPost } from "@/interfaces";
 
-export interface PostProps {
-  slug: string;
-  title: string;
-  date: string;
-  wordCount: number;
-  readingTime: number;
-  tags: string[];
-}
-
-export function Post({ post }: { post: PostProps }) {
+export function Post({ post }: { post: IPost }) {
   return (
     <article className="border-b border-dashed border-gray-500 py-4 first:pt-0 last:border-none">
       <Link
@@ -18,23 +11,16 @@ export function Post({ post }: { post: PostProps }) {
       >
         {post.title}
       </Link>
+
       <div className="mt-2 text-sm text-muted-foreground">
-        <time>{post.date}</time>
-        <span className="mx-1">|</span>
+        <time>{post.createdAt}</time>
+        <span className="mx-1">·</span>
         <span>{post.wordCount} words</span>
-        <span className="mx-1">|</span>
+        <span className="mx-1">·</span>
         <span>{post.readingTime} min</span>
-        <span className="mx-1">|</span>
-        {post.tags.map((tag, i) => (
-          <span key={tag}>
-            <Link
-              href={`/blog?tag=${tag}`}
-              className="text-muted-foreground hover:text-foreground hover:underline hover:underline-offset-2"
-            >
-              {tag}
-            </Link>
-            {i < post.tags.length - 1 && " "}
-          </span>
+        <span className="mx-1">·</span>
+        {post.tags.map((tag) => (
+          <Tag key={tag.id} tag={tag} className="mx-1" />
         ))}
       </div>
     </article>

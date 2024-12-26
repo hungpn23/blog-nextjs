@@ -1,11 +1,12 @@
 import { cn } from "@/lib/utils";
 
-interface ContentProps {
+export function ContentContainer({
+  children,
+  className,
+}: {
   children: React.ReactNode;
   className?: string;
-}
-
-export function ContentContainer({ children, className }: ContentProps) {
+}) {
   return (
     <div
       className={cn(
