@@ -1,14 +1,14 @@
-export interface IPost {
+export type PostType = {
   id: string;
   title: string;
   slug: string;
   createdAt: string;
   wordCount: number;
   readingTime: number;
-  tags: ITag[];
-}
+  tags: TagType[];
+};
 
-export interface ITag {
+export type TagType = {
   id: string;
   name: string;
-}
+};

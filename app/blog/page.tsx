@@ -2,9 +2,26 @@ import { Post } from "@/components/elements/post";
 import { Pagination } from "@/components/client-components/pagination";
 import { PageBody } from "@/components/layouts/page-body";
 import { Tag } from "@/components/elements/tag";
-import { posts, tags } from "@/data";
+import instance from "@/utils/axios";
+import type { PaginatedType } from "@/types/paginated.type";
+import type { PostType, TagType } from "@/types/data.type";
 
-const POSTS_PER_PAGE = 5;
+async function getPaginatedPosts(
+  currentPage: number,
+  limit: number,
+  order: string = "DESC",
+) {
+  const { data } = await instance.get<PaginatedType<PostType>>(
+    `/post?page=${currentPage}&limit=${limit}&order=${order}`,
+  );
+
+  return data as PaginatedType<PostType>;
+}
+
+async function getAllTags() {
+  const { data } = await instance.get<TagType[]>("/tag");
+  return data;
+}
 
 export default async function BlogPage({
   searchParams,
@@ -12,9 +29,20 @@ export default async function BlogPage({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const params = await searchParams;
-  const currentPage = Number(params?.page) || 1;
 
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  let currentPage = Number(params?.page);
+  if (Number(params?.page) < 1 || !Number(params?.page)) currentPage = 1;
+
+  let limit = Number(params?.limit);
+  if (Number(params?.limit) < 10 || !Number(params?.limit)) limit = 10;
+
+  let order = String(params?.order);
+  if (String(params?.order) !== "ASC" && String(params?.order) !== "DESC") {
+    order = "DESC";
+  }
+
+  const tags = await getAllTags();
+  const { data, metadata } = await getPaginatedPosts(currentPage, limit, order);
 
   return (
     <PageBody>
@@ -24,13 +52,13 @@ export default async function BlogPage({
         ))}
       </div>
 
-      <div>
-        {posts.map((post) => (
+      <div className="flex flex-col flex-wrap">
+        {data.map((post) => (
           <Post key={post.id} post={post} />
         ))}
       </div>
 
-      <Pagination totalPages={totalPages} />
+      <Pagination key={metadata.totalPages} metadata={metadata} />
     </PageBody>
   );
 }

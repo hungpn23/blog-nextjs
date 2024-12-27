@@ -1,6 +1,6 @@
 "use client";
 
-import { ITag } from "@/interfaces";
+import type { TagType } from "@/types/data.type";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -10,7 +10,7 @@ export function Tag({
   key,
   className,
 }: {
-  tag: ITag;
+  tag: TagType;
   key: string;
   className?: string;
 }) {
@@ -28,6 +28,8 @@ export function Tag({
     return `${pathname}?${params.toString()}`;
   };
 
+  const isSelected = currentTag === tag.name;
+
   return (
     <Link
       key={key}
@@ -37,7 +39,12 @@ export function Tag({
         currentTag === tag.name && "bg-foreground text-primary",
         "rounded-sm bg-muted px-1 text-base hover:underline hover:underline-offset-2",
       )}
+      role="button"
+      aria-label={`Filter by ${tag.name} tag`}
+      aria-pressed={isSelected}
+      aria-current={isSelected ? "true" : undefined}
     >
+      <span className="sr-only">Filter posts with tag:</span>
       {tag.name}
     </Link>
   );

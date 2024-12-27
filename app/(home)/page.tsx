@@ -19,7 +19,10 @@ export default function Home() {
       </div>
 
       <div className="space-y-12">
-        <section>
+        <section aria-labelledby="about-me">
+          <h2 id="about-me" className="sr-only">
+            About Me
+          </h2>
           <p className="mb-4">
             I genuinely find everything about programming interesting. I
             specialize in{" "}
@@ -28,38 +31,41 @@ export default function Home() {
             <span className="text-nodejs"> Node.js</span>
           </p>
 
-          <h2 className="mb-4 text-2xl font-semibold">Skill set</h2>
+          <section aria-labelledby="skill-set">
+            <h2 id="skill-set" className="mb-4 text-2xl font-semibold">
+              Skill set
+            </h2>
+            <p className="mb-4">Over the years, I have worked with:</p>
 
-          <p className="mb-4">Over the years, I have worked with:</p>
+            <ul className="list-inside list-disc space-y-1">
+              <li>
+                <em>Languagues: </em>
 
-          <ul className="list-inside list-disc space-y-1">
-            <li>
-              <em>Languagues: </em>
+                <span className="text-primary">JavaScript, TypeScript</span>
+              </li>
+              <li>
+                <em>Libraries & frameworks: </em>
 
-              <span className="text-primary">JavaScript, TypeScript</span>
-            </li>
-            <li>
-              <em>Libraries & frameworks: </em>
-
-              <span className="text-primary">Nest.js, Next.js</span>
-            </li>
-            <li>
-              <em>Databases: </em>
-              <span className="text-primary">MySQL, Redis</span>
-            </li>
-            <li>
-              <em>Tools: </em>
-              <span className="text-primary">Docker, Git (Github)</span>
-            </li>
-            <li>
-              <em>Cloud services: </em>
-              <span className="text-primary">Cloudinary, S3, EC2</span>
-            </li>
-          </ul>
+                <span className="text-primary">Nest.js, Next.js</span>
+              </li>
+              <li>
+                <em>Databases: </em>
+                <span className="text-primary">MySQL, Redis</span>
+              </li>
+              <li>
+                <em>Tools: </em>
+                <span className="text-primary">Docker, Git (Github)</span>
+              </li>
+              <li>
+                <em>Cloud services: </em>
+                <span className="text-primary">Cloudinary, S3, EC2</span>
+              </li>
+            </ul>
+          </section>
         </section>
 
-        <section>
-          <h3 className="mb-2 text-xl font-semibold">
+        <section aria-labelledby="future-interests">
+          <h3 id="future-interests" className="mb-2 text-xl font-medium">
             What I'd like to get more acquainted with in the future:
           </h3>
           <ul className="list-inside list-disc space-y-1">
@@ -68,8 +74,10 @@ export default function Home() {
           </ul>
         </section>
 
-        <section>
-          <h2 className="mb-4 text-2xl font-semibold">Contact</h2>
+        <section aria-labelledby="contact">
+          <h2 id="contact" className="mb-4 text-2xl font-semibold">
+            Contact
+          </h2>
           <p>
             I guess there could be many ways to do that, but the most common
             ones would be via{" "}
@@ -90,8 +98,8 @@ export default function Home() {
           </p>
         </section>
 
-        <section>
-          <h2 className="mb-4 text-2xl font-semibold">
+        <section aria-labelledby="about-me-extra">
+          <h2 id="about-me-extra" className="mb-4 text-2xl font-semibold">
             A few other things about me
           </h2>
           <ul className="list-inside list-disc space-y-4">

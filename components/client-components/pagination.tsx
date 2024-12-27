@@ -6,19 +6,16 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { MetadataType } from "@/types/paginated.type";
 
-export function Pagination({ totalPages }: { totalPages: number }) {
+export function Pagination({ metadata }: { metadata: MetadataType }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
 
-  const currentPage = Number(searchParams.get("page")) || 1;
+  const { totalPages } = metadata;
 
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-    params.set("page", "1");
-    router.replace(`${pathname}?${params.toString()}`);
-  }, []);
+  const currentPage = Number(searchParams.get("page")) || 1;
 
   useEffect(() => {
     if (currentPage > totalPages || currentPage < 1) {
