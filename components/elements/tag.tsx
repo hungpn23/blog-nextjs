@@ -21,9 +21,12 @@ export function Tag({
   const getHref = () => {
     const params = new URLSearchParams(searchParams.toString());
 
-    currentTag !== tag.name
-      ? params.set("tag", tag.name)
-      : params.delete("tag");
+    if (currentTag !== tag.name) {
+      params.set("tag", tag.name);
+      params.set("page", "1"); // Reset to first page when filter tag
+    } else {
+      params.delete("tag");
+    }
 
     return `${pathname}?${params.toString()}`;
   };

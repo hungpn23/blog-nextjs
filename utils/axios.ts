@@ -1,4 +1,3 @@
-import { HttpResponseType } from "@/types/http-response.type";
 import axios from "axios";
 
 const instance = axios.create({

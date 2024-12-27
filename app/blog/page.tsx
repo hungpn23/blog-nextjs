@@ -2,26 +2,8 @@ import { Post } from "@/components/elements/post";
 import { Pagination } from "@/components/client-components/pagination";
 import { PageBody } from "@/components/layouts/page-body";
 import { Tag } from "@/components/elements/tag";
-import instance from "@/utils/axios";
-import type { PaginatedType } from "@/types/paginated.type";
-import type { PostType, TagType } from "@/types/data.type";
-
-async function getPaginatedPosts(
-  currentPage: number,
-  limit: number,
-  order: string = "DESC",
-) {
-  const { data } = await instance.get<PaginatedType<PostType>>(
-    `/post?page=${currentPage}&limit=${limit}&order=${order}`,
-  );
-
-  return data as PaginatedType<PostType>;
-}
-
-async function getAllTags() {
-  const { data } = await instance.get<TagType[]>("/tag");
-  return data;
-}
+import { getPaginatedPosts } from "@/services/post.service";
+import { getAllTags } from "@/services/tag.service";
 
 export default async function BlogPage({
   searchParams,
@@ -41,8 +23,12 @@ export default async function BlogPage({
     order = "DESC";
   }
 
-  const tags = await getAllTags();
-  const { data, metadata } = await getPaginatedPosts(currentPage, limit, order);
+  const tag = params?.tag ? String(params.tag) : undefined;
+
+  const [{ data, metadata }, tags] = await Promise.all([
+    await getPaginatedPosts(currentPage, limit, order, tag),
+    await getAllTags(),
+  ]);
 
   return (
     <PageBody>

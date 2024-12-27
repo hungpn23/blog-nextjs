@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Tag } from "./tag";
-import { PostType } from "@/types/data.type";
+import dayjs from "dayjs";
+import type { PostType } from "@/types/data.type";
 
 export function Post({ post }: { post: PostType }) {
   return (
@@ -17,7 +18,7 @@ export function Post({ post }: { post: PostType }) {
         className="mt-2 text-sm text-muted-foreground"
         aria-label="Post metadata"
       >
-        <time>{post.createdAt}</time>
+        <time>{dayjs(post.createdAt).format("HH:mm DD-MM-YYYY")}</time>
         <span className="mx-1">·</span>
         <span>{post.wordCount} words</span>
         <span className="mx-1">·</span>
