@@ -12,3 +12,15 @@ export type TagType = {
   id: string;
   name: string;
 };
+
+export type LoginResponseType = {
+  user: {
+    email: string;
+    username: string;
+    isEmailVerified: boolean;
+    bio: string;
+    avatar: string;
+  };
+  accessToken: string;
+  refreshToken: string;
+};

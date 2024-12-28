@@ -1,32 +1,23 @@
 import { Post } from "@/components/elements/post";
-import { Pagination } from "@/components/client-components/pagination";
 import { PageBody } from "@/components/layouts/page-body";
-import { Tag } from "@/components/elements/tag";
-import { getPaginatedPosts } from "@/services/post.service";
-import { getAllTags } from "@/services/tag.service";
+import { getAllTags, getPaginatedPosts } from "@/actions/fetch-data.action";
+import { SearchParams } from "nuqs/server";
+import { searchParamsCache } from "@/lib/search-params";
+import { PaginationV2 } from "@/components/client-components/pagination-v2";
+import { TagV2 } from "@/components/elements/tag-v2";
 
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<SearchParams>;
 }) {
-  const params = await searchParams;
-
-  let currentPage = Number(params?.page);
-  if (Number(params?.page) < 1 || !Number(params?.page)) currentPage = 1;
-
-  let limit = Number(params?.limit);
-  if (Number(params?.limit) < 10 || !Number(params?.limit)) limit = 10;
-
-  let order = String(params?.order);
-  if (String(params?.order) !== "ASC" && String(params?.order) !== "DESC") {
-    order = "DESC";
-  }
-
-  const tag = params?.tag ? String(params.tag) : undefined;
+  // upgrade to nuqs --> more readable code
+  const { page, limit, order, tag } = searchParamsCache.parse(
+    await searchParams,
+  );
 
   const [{ data, metadata }, tags] = await Promise.all([
-    await getPaginatedPosts(currentPage, limit, order, tag),
+    await getPaginatedPosts(page, limit, order, tag),
     await getAllTags(),
   ]);
 
@@ -34,7 +25,7 @@ export default async function BlogPage({
     <PageBody>
       <div className="flex flex-wrap gap-2 pb-8">
         {tags.map((tag) => (
-          <Tag key={tag.id} tag={tag} />
+          <TagV2 key={tag.id} tag={tag} />
         ))}
       </div>
 
@@ -44,7 +35,7 @@ export default async function BlogPage({
         ))}
       </div>
 
-      <Pagination key={metadata.totalPages} metadata={metadata} />
+      <PaginationV2 key={metadata.totalPages} metadata={metadata} />
     </PageBody>
   );
 }

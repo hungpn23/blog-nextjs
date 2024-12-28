@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
-import { Inconsolata } from "next/font/google";
 import "./globals.css";
+import { Inconsolata } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Header } from "@/components/layouts/header";
 import { ContentContainer } from "@/components/layouts/content-container";
+import { Header } from "@/components/layouts/header";
 import { Footer } from "@/components/layouts/footer";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+
+import type { Metadata } from "next";
 
 const inconsolata = Inconsolata({
   subsets: ["vietnamese"],
@@ -39,7 +41,9 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-grow">
-              <ContentContainer>{children}</ContentContainer>
+              <NuqsAdapter>
+                <ContentContainer>{children}</ContentContainer>
+              </NuqsAdapter>
             </main>
             <Toaster />
             <Footer />

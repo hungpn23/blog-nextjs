@@ -8,6 +8,9 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { MetadataType } from "@/types/paginated.type";
 
+/**
+ * @deprecated
+ */
 export function Pagination({ metadata }: { metadata: MetadataType }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -23,7 +26,7 @@ export function Pagination({ metadata }: { metadata: MetadataType }) {
       params.set("page", "1");
       router.replace(`${pathname}?${params.toString()}`);
     }
-  }, [currentPage, totalPages, searchParams, pathname]);
+  }, [currentPage, totalPages, searchParams]);
 
   const getPageURL = (pageNumber: number) => {
     const params = new URLSearchParams(searchParams);

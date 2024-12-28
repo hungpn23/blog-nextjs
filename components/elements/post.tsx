@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Tag } from "./tag";
 import dayjs from "dayjs";
 import type { PostType } from "@/types/data.type";
+import { TagV2 } from "./tag-v2";
 
 export function Post({ post }: { post: PostType }) {
   return (
@@ -26,7 +27,7 @@ export function Post({ post }: { post: PostType }) {
         <span className="mx-1">·</span>
 
         {post.tags.map((tag) => (
-          <Tag key={tag.id} tag={tag} className="mx-1" />
+          <TagV2 key={tag.id} tag={tag} className="mx-1" />
         ))}
       </div>
     </article>

@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
+/**
+ * @deprecated
+ */
 export function Tag({
   tag,
   key,
@@ -19,7 +22,7 @@ export function Tag({
   const currentTag = searchParams.get("tag");
 
   const getHref = () => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams);
 
     if (currentTag !== tag.name) {
       params.set("tag", tag.name);
@@ -30,8 +33,6 @@ export function Tag({
 
     return `${pathname}?${params.toString()}`;
   };
-
-  const isSelected = currentTag === tag.name;
 
   return (
     <Link
@@ -44,8 +45,6 @@ export function Tag({
       )}
       role="button"
       aria-label={`Filter by ${tag.name} tag`}
-      aria-pressed={isSelected}
-      aria-current={isSelected ? "true" : undefined}
     >
       <span className="sr-only">Filter posts with tag:</span>
       {tag.name}
