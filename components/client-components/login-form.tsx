@@ -11,15 +11,31 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useActionState } from "react";
-import { login } from "@/actions/auth.action";
+import { useActionState, useEffect } from "react";
+import { login } from "@/actions/login.action";
+import { useToast } from "@/hooks/use-toast";
+import type { LoginStateType } from "@/types/auth.type";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const [error, action, isPending] = useActionState(login, undefined); // mean previousState in login is undefined
-  console.log("error", error);
+  const { toast } = useToast();
+
+  const [state, action, isPending] = useActionState<LoginStateType, FormData>(
+    login,
+    null,
+  );
+
+  useEffect(() => {
+    if (state?.error && state?.error.details === undefined) {
+      toast({
+        variant: "destructive",
+        title: "Login failed.",
+        description: state.error.message,
+      });
+    }
+  }, [state, toast]);
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -36,15 +52,31 @@ export function LoginForm({
                   Email<span className="text-red-500">*</span>
                 </Label>
                 <Input
-                  // className="border-red-500"
+                  className={
+                    state?.error.details?.some(
+                      ({ property }) => property === "email",
+                    )
+                      ? "border-red-500"
+                      : ""
+                  }
                   name="email"
                   type="email"
                   placeholder="user@example.com"
+                  defaultValue={state?.input.email}
+                  autoFocus
+                  tabIndex={1}
                   required
                 />
-                {/* <span className="ml-4 text-sm text-red-500">
-                  - email is required
-                </span> */}
+
+                {state?.error.details?.map(({ property, code, message }) => {
+                  if (property === "email") {
+                    return (
+                      <span key={code} className="ml-4 text-sm text-red-500">
+                        - {message}
+                      </span>
+                    );
+                  }
+                })}
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
@@ -58,7 +90,30 @@ export function LoginForm({
                     Forgot your password?
                   </a>
                 </div>
-                <Input name="password" type="password" required />
+                <Input
+                  className={
+                    state?.error.details?.some(
+                      ({ property }) => property === "password",
+                    )
+                      ? "border-red-500"
+                      : ""
+                  }
+                  name="password"
+                  type="password"
+                  defaultValue={state?.input.password}
+                  tabIndex={2}
+                  required
+                />
+
+                {state?.error.details?.map(({ property, code, message }) => {
+                  if (property === "password") {
+                    return (
+                      <span key={code} className="ml-4 text-sm text-red-500">
+                        - {message}
+                      </span>
+                    );
+                  }
+                })}
               </div>
               <Button disabled={isPending} type="submit" className="w-full">
                 Login

@@ -1,10 +1,9 @@
-import Link from "next/link";
-import { Tag } from "./tag";
 import dayjs from "dayjs";
-import type { PostType } from "@/types/data.type";
+import Link from "next/link";
 import { TagV2 } from "./tag-v2";
+import type { PostTagsType } from "@/types/data.type";
 
-export function Post({ post }: { post: PostType }) {
+export function Post({ post }: { post: PostTagsType }) {
   return (
     <article className="border-b border-dashed border-gray-500 py-4 first:pt-0 last:border-none">
       <Link

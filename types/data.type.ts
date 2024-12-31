@@ -1,26 +1,27 @@
-export type PostType = {
-  id: string;
+import type { BaseEntityType } from "./base-entity.type";
+
+export type PostType = BaseEntityType & {
   title: string;
   slug: string;
-  createdAt: string;
+  content: string;
   wordCount: number;
   readingTime: number;
+  viewCount: number;
+};
+
+export type PostTagsType = PostType & {
   tags: TagType[];
 };
 
-export type TagType = {
-  id: string;
+export type TagType = BaseEntityType & {
   name: string;
 };
 
-export type LoginResponseType = {
-  user: {
-    email: string;
-    username: string;
-    isEmailVerified: boolean;
-    bio: string;
-    avatar: string;
-  };
-  accessToken: string;
-  refreshToken: string;
+export type UserType = BaseEntityType & {
+  role: string;
+  username: string;
+  email: string;
+  isEmailVerified: boolean;
+  bio?: string;
+  avatar?: string;
 };

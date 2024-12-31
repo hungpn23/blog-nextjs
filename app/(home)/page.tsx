@@ -14,7 +14,7 @@ export default function Home() {
           className="rounded-md"
           priority
         />
-        <h1 className="text-center text-3xl font-semibold">Phạm Ngọc Hùng</h1>
+        <h1 className="text-center text-3xl font-semibold">Blog</h1>
         <p className="text-center text-primary">Backend Developer</p>
       </div>
 

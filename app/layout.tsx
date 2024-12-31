@@ -16,7 +16,7 @@ const inconsolata = Inconsolata({
 });
 
 export const metadata: Metadata = {
-  title: "Pham Ngoc Hung - Backend Developer",
+  title: "Blog",
   description: "Ngoc Hung's personal website and blog",
 };
 
@@ -42,10 +42,12 @@ export default function RootLayout({
             <Header />
             <main className="flex-grow">
               <NuqsAdapter>
-                <ContentContainer>{children}</ContentContainer>
+                <ContentContainer>
+                  {children}
+                  <Toaster />
+                </ContentContainer>
               </NuqsAdapter>
             </main>
-            <Toaster />
             <Footer />
           </div>
         </ThemeProvider>

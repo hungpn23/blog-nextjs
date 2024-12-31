@@ -16,26 +16,29 @@ export default async function BlogPage({
     await searchParams,
   );
 
-  const [{ data, metadata }, tags] = await Promise.all([
+  const [paginated, tags] = await Promise.all([
     await getPaginatedPosts(page, limit, order, tag),
     await getAllTags(),
   ]);
 
+  if (!paginated || !tags) throw new Error("Failed to fetch data");
+
   return (
     <PageBody>
       <div className="flex flex-wrap gap-2 pb-8">
-        {tags.map((tag) => (
-          <TagV2 key={tag.id} tag={tag} />
-        ))}
+        {tags?.map((tag) => <TagV2 key={tag.id} tag={tag} />)}
       </div>
 
       <div className="flex flex-col flex-wrap">
-        {data.map((post) => (
+        {paginated.paginatedData.map((post) => (
           <Post key={post.id} post={post} />
         ))}
       </div>
 
-      <PaginationV2 key={metadata.totalPages} metadata={metadata} />
+      <PaginationV2
+        key={paginated.metadata.totalPages}
+        metadata={paginated.metadata}
+      />
     </PageBody>
   );
 }

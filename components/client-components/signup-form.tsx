@@ -34,6 +34,8 @@ export function SignUpForm({
                   name="email"
                   type="email"
                   placeholder="m@example.com"
+                  autoFocus
+                  tabIndex={1}
                   required
                 />
               </div>
@@ -44,16 +46,16 @@ export function SignUpForm({
                     Password<span className="text-red-500">*</span>
                   </Label>
                 </div>
-                <Input name="password" type="password" required />
+                <Input name="password" type="password" tabIndex={2} required />
               </div>
 
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">
-                    Password<span className="text-red-500">*</span>
+                    Confirm password<span className="text-red-500">*</span>
                   </Label>
                 </div>
-                <Input name="password" type="password" required />
+                <Input name="password" type="password" tabIndex={3} required />
               </div>
               <Button type="submit" className="w-full">
                 Sign up
