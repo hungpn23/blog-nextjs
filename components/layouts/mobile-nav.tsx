@@ -1,9 +1,9 @@
-import { Github, Youtube, FileText, LogIn } from "lucide-react";
+import { Github, Youtube, FileText } from "lucide-react";
 import { NavIcon } from "../elements/nav-icon";
 import { NavLink } from "../client-components/nav-link";
 import { Separator } from "../elements/separator";
 import { ToggleTheme } from "../client-components/toggle-theme";
-import { LoginBtn } from "../client-components/login-btn";
+import { AuthBtn } from "../client-components/auth-btn";
 
 export function MobileNav() {
   return (
@@ -33,9 +33,7 @@ export function MobileNav() {
 
           <Separator direction="horizontal" />
 
-          <LoginBtn>
-            <LogIn className="h-4 w-4" />
-          </LoginBtn>
+          <AuthBtn />
 
           <ToggleTheme />
         </div>

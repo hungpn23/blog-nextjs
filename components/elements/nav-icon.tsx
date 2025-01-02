@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 
 export function NavIcon({
   href = "",
-  target = "_self",
+  target = "_blank",
   className,
   children,
 }: {

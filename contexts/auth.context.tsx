@@ -1,23 +1,26 @@
 "use client";
 
 import { getUser } from "@/actions/fetch-data.action";
+import { UserType } from "@/types/data.type";
 import { createContext, useEffect, useState } from "react";
 
-export const AuthContext = createContext({ isAuthenticated: false });
+export const AuthContext = createContext<UserType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState<UserType | undefined>(undefined);
 
   useEffect(() => {
     getUser()
       .then((user) => {
-        setIsAuthenticated("email" in user ? true : false);
+        if ("email" in user) {
+          setUser(user);
+        }
       })
       .catch((error) => {
         console.error(error);
-        setIsAuthenticated(false);
+        setUser(undefined);
       });
   }, []);
 
-  return <AuthContext value={{ isAuthenticated }}>{children}</AuthContext>;
+  return <AuthContext value={user}>{children}</AuthContext>;
 };

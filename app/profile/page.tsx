@@ -3,6 +3,7 @@ import { UserAvatar } from "@/components/client-components/user-avatar";
 import { PageBody } from "@/components/layouts/page-body";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { IMAGE_HOST } from "@/lib/constants";
 import dayjs from "dayjs";
 import Image from "next/image";
 
@@ -21,7 +22,7 @@ export default async function ProfilePage() {
                 <div className="flex items-center space-x-4">
                   <Image
                     className="rounded-full"
-                    src={`http://localhost:3001/${user.avatar}`}
+                    src={`${IMAGE_HOST}${user.avatar}`}
                     alt={user.username}
                     height={60}
                     width={60}
