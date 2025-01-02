@@ -4,7 +4,7 @@ import { getAllTags, getPaginatedPosts } from "@/actions/fetch-data.action";
 import { SearchParams } from "nuqs/server";
 import { searchParamsCache } from "@/lib/search-params";
 import { PaginationV2 } from "@/components/client-components/pagination-v2";
-import { TagV2 } from "@/components/elements/tag-v2";
+import { TagV2 } from "@/components/client-components/tag-v2";
 
 export default async function BlogPage({
   searchParams,
@@ -21,7 +21,9 @@ export default async function BlogPage({
     await getAllTags(),
   ]);
 
-  if (!paginated || !tags) throw new Error("Failed to fetch data");
+  if ("statusCode" in paginated || "statusCode" in tags) {
+    throw new Error("Failed to fetch data");
+  }
 
   return (
     <PageBody>

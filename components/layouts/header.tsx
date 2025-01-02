@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Github, Youtube, FileText, LogIn } from "lucide-react";
+import { Github, Send, LogIn } from "lucide-react";
 import { NavLink } from "../client-components/nav-link";
 import { ContentContainer } from "./content-container";
 import { NavIcon } from "../elements/nav-icon";
 import { MobileMenu } from "./mobile-menu";
 import { Separator } from "../elements/separator";
 import { ToggleTheme } from "../client-components/toggle-theme";
-import { LoginBtn } from "../elements/login-btn";
+import { LoginBtn } from "../client-components/login-btn";
 
 export function Header() {
   return (
@@ -31,11 +31,7 @@ export function Header() {
             </NavIcon>
 
             <NavIcon>
-              <FileText className="h-4 w-4" />
-            </NavIcon>
-
-            <NavIcon>
-              <Youtube className="h-4 w-4" />
+              <Send className="h-4 w-4" />
             </NavIcon>
 
             <Separator className="mr-2" />

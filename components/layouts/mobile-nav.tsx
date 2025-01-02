@@ -3,7 +3,7 @@ import { NavIcon } from "../elements/nav-icon";
 import { NavLink } from "../client-components/nav-link";
 import { Separator } from "../elements/separator";
 import { ToggleTheme } from "../client-components/toggle-theme";
-import { LoginBtn } from "../elements/login-btn";
+import { LoginBtn } from "../client-components/login-btn";
 
 export function MobileNav() {
   return (

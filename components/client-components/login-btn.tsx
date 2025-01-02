@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { AuthContext } from "@/contexts/auth.context";
+import { use } from "react";
 import { usePathname } from "next/navigation";
-import { protectedRoutes } from "@/middleware";
 
 export function LoginBtn({
   className,
@@ -12,18 +13,16 @@ export function LoginBtn({
   className?: string;
   children: React.ReactNode;
 }) {
+  const { isAuthenticated } = use(AuthContext);
   const pathname = usePathname();
 
-  const checkRoutes = (pathname: string) => {
-    if (protectedRoutes.includes(pathname) || pathname === "/login")
-      return true;
-
-    return false;
+  const checkHidden = () => {
+    if (isAuthenticated || pathname === "/login") return "hidden";
   };
 
   return (
     <Button variant="ghost" size="icon" className={className} asChild>
-      <Link href="/login" className={checkRoutes(pathname) ? "hidden" : ""}>
+      <Link href="/login" className={checkHidden()}>
         {children}
       </Link>
     </Button>

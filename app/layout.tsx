@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import type { Metadata } from "next";
+import { AuthProvider } from "@/contexts/auth.context";
 
 const inconsolata = Inconsolata({
   subsets: ["vietnamese"],
@@ -38,18 +39,20 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-grow">
-              <NuqsAdapter>
-                <ContentContainer>
-                  {children}
-                  <Toaster />
-                </ContentContainer>
-              </NuqsAdapter>
-            </main>
-            <Footer />
-          </div>
+          <AuthProvider>
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-grow">
+                <NuqsAdapter>
+                  <ContentContainer>
+                    {children}
+                    <Toaster />
+                  </ContentContainer>
+                </NuqsAdapter>
+              </main>
+              <Footer />
+            </div>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

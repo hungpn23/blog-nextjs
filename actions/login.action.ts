@@ -3,8 +3,7 @@
 import { jwtDecode } from "jwt-decode";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { AxiosService } from "@/lib/axios";
-import { AxiosError } from "axios";
+import { BASE_URL } from "@/lib/constants";
 import type { LoginInputType, LoginStateType } from "@/types/auth.type";
 
 export async function login(
@@ -16,27 +15,32 @@ export async function login(
     password: formData.get("password") as string,
   };
 
-  try {
-    const response = await AxiosService.post<{ accessToken: string }>(
-      `/auth/login`,
-      input,
-    );
-    const { accessToken } = response.data;
+  const response = await fetch(`${BASE_URL}/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify(input),
+  });
 
-    (await cookies()).set({
-      name: "access_token",
-      value: accessToken,
-      httpOnly: true,
-      expires: jwtDecode(accessToken).exp! * 1000,
-    });
-  } catch (error: unknown) {
-    if (error instanceof AxiosError) {
-      return {
-        input,
-        error: error.response!.data,
-      } as LoginStateType;
-    }
+  const data = await response.json();
+
+  if (!response.ok) {
+    return {
+      input,
+      error: data,
+    } as LoginStateType;
   }
+
+  const { accessToken } = data;
+
+  (await cookies()).set({
+    name: "access_token",
+    value: accessToken,
+    httpOnly: true,
+    expires: jwtDecode(accessToken).exp! * 1000,
+  });
 
   redirect("/profile");
 }

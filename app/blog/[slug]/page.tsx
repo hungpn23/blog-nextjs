@@ -5,5 +5,7 @@ export default async function PostDetailPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  return <PageBody>Post Detail Page</PageBody>;
+  const { slug } = await params;
+
+  return <PageBody>{slug}</PageBody>;
 }

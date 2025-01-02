@@ -17,7 +17,7 @@ export function Toast({
       title: "Uh oh! Something went wrong.",
       description: "There was a problem with your request.",
     });
-  }, []);
+  }, [toast, variant]);
 
   return <PageBody>Error</PageBody>;
 }

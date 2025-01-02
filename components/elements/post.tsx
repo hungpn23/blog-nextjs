@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import Link from "next/link";
-import { TagV2 } from "./tag-v2";
 import type { PostTagsType } from "@/types/data.type";
+import { TagV2 } from "../client-components/tag-v2";
 
 export function Post({ post }: { post: PostTagsType }) {
   return (

@@ -66,7 +66,7 @@ export default function Home() {
 
         <section aria-labelledby="future-interests">
           <h3 id="future-interests" className="mb-2 text-xl font-medium">
-            What I'd like to get more acquainted with in the future:
+            What I&apos;d like to get more acquainted with in the future:
           </h3>
           <ul className="list-inside list-disc space-y-1">
             <li>Java (Spring), Golang</li>
@@ -104,13 +104,13 @@ export default function Home() {
           </h2>
           <ul className="list-inside list-disc space-y-4">
             <li>
-              I like to go beyond the abstractions offered by the tools I'm
+              I like to go beyond the abstractions offered by the tools I&apos;m
               using; hence, exploring the source code is something that I find
               fun and fulfilling
             </li>
             <li>
-              I love sharing my knowledge with other developers; the ways I'm
-              currently doing that is via{" "}
+              I love sharing my knowledge with other developers; the ways
+              I&apos;m currently doing that is via{" "}
               <Link
                 href="https://youtube.com"
                 className="text-primary hover:underline"

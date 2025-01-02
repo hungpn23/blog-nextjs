@@ -18,6 +18,14 @@ export function TagV2({
     scroll: true,
   });
 
+  const toggleTag = () => {
+    if (currentTag === tag.name) {
+      setCurrentTag(null);
+    } else {
+      setCurrentTag(tag.name);
+    }
+  };
+
   return (
     <span
       key={key}
@@ -27,9 +35,7 @@ export function TagV2({
         "cursor-pointer rounded-sm bg-muted px-1 text-base hover:underline hover:underline-offset-2",
       )}
       aria-label={`Filter by ${tag.name} tag`}
-      onClick={() => {
-        currentTag === tag.name ? setCurrentTag(null) : setCurrentTag(tag.name);
-      }}
+      onClick={toggleTag}
     >
       <span className="sr-only">Filter posts with tag:</span>
       {tag.name}

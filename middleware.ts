@@ -1,30 +1,28 @@
 import { NextResponse } from "next/server";
+import { protectedRoutes, publicRoutes } from "./lib/constants";
+import { getUser } from "./actions/fetch-data.action";
 import type { NextRequest } from "next/server";
-import { AxiosService } from "./lib/axios";
-import { UserType } from "./types/data.type";
-import { AxiosError } from "axios";
 
-export const protectedRoutes = ["/profile"];
+async function isAuthenticated() {
+  const response = await getUser();
+
+  if ("statusCode" in response) return false;
+
+  return true;
+}
 
 export default async function middleware(req: NextRequest) {
-  if (protectedRoutes.includes(req.nextUrl.pathname)) {
-    const token = req.cookies.get("access_token")?.value;
-    if (!token) {
-      return NextResponse.redirect(new URL("/login", req.url));
-    } else {
-      try {
-        await AxiosService.get<UserType>("/user");
-      } catch (error) {
-        if (error instanceof AxiosError) {
-          console.error(
-            "Auth error in middleware:",
-            error.response?.data.message || "unknown error",
-          );
-        }
-        return NextResponse.redirect(new URL("/login", req.url));
-      }
-    }
+  const validated = await isAuthenticated();
+  const pathname = req.nextUrl.pathname;
+
+  if (protectedRoutes.includes(pathname) && !validated) {
+    return NextResponse.redirect(new URL("/login", req.url));
   }
+
+  if (publicRoutes.includes(pathname) && validated) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+
   return NextResponse.next();
 }
 

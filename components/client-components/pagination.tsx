@@ -26,7 +26,7 @@ export function Pagination({ metadata }: { metadata: MetadataType }) {
       params.set("page", "1");
       router.replace(`${pathname}?${params.toString()}`);
     }
-  }, [currentPage, totalPages, searchParams]);
+  }, [currentPage, totalPages, searchParams, pathname, router]);
 
   const getPageURL = (pageNumber: number) => {
     const params = new URLSearchParams(searchParams);

@@ -1,5 +1,4 @@
 import { NextConfig } from "next";
-import { BASE_URL } from "./lib/constants";
 
 const nextConfig: NextConfig = {
   logging: {
@@ -10,6 +9,15 @@ const nextConfig: NextConfig = {
   // experimental: {
   //   authInterrupts: true,
   // },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3001",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
