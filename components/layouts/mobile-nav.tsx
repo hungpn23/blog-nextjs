@@ -1,14 +1,17 @@
-import { Github, Youtube, FileText } from "lucide-react";
-import { NavIcon } from "../elements/nav-icon";
+import { Github, Youtube, FileText, Send } from "lucide-react";
 import { NavLink } from "../client-components/nav-link";
-import { Separator } from "../elements/separator";
 import { ToggleTheme } from "../client-components/toggle-theme";
 import { AuthBtn } from "../client-components/auth-btn";
+import { Separator } from "../server-components/separator";
+import { NavIcon } from "../server-components/nav-icon";
 
 export function MobileNav() {
   return (
     <div className="flex h-full flex-col pt-6">
       <nav className="flex flex-col items-center space-y-8">
+        <NavLink className="mr-0" href="/profile">
+          Profile
+        </NavLink>
         <NavLink className="mr-0" href="/blog">
           Blog
         </NavLink>
@@ -19,16 +22,12 @@ export function MobileNav() {
         <div className="flex flex-col items-center space-y-6">
           <Separator direction="horizontal" />
 
-          <NavIcon>
+          <NavIcon href="https://github.com/hungpn23">
             <Github className="h-4 w-4" />
           </NavIcon>
 
-          <NavIcon>
-            <FileText className="h-4 w-4" />
-          </NavIcon>
-
-          <NavIcon>
-            <Youtube className="h-4 w-4" />
+          <NavIcon href="https://t.me/hungpn23">
+            <Send className="h-4 w-4" />
           </NavIcon>
 
           <Separator direction="horizontal" />

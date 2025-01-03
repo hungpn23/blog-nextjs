@@ -1,7 +1,6 @@
 "use client";
 
 import { useToast } from "@/hooks/use-toast";
-import { PageBody } from "../layouts/page-body";
 import { useEffect } from "react";
 
 export function Toast({
@@ -19,5 +18,5 @@ export function Toast({
     });
   }, [toast, variant]);
 
-  return <PageBody>Error</PageBody>;
+  return <main>Error</main>;
 }

@@ -1,6 +1,5 @@
 "use client"; // Error boundaries must be Client Components
 
-import { PageBody } from "@/components/layouts/page-body";
 import { useEffect } from "react";
 
 export default function Error({
@@ -16,7 +15,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <PageBody>
+    <main>
       <h2>Something went wrong!</h2>
       <button
         onClick={
@@ -26,6 +25,6 @@ export default function Error({
       >
         Try again
       </button>
-    </PageBody>
+    </main>
   );
 }

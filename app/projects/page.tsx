@@ -1,9 +1,9 @@
-import { PageBody } from "@/components/layouts/page-body";
+import { Container } from "@/components/layouts/container";
 
 export default function ProjectsPage() {
   return (
-    <PageBody>
+    <Container>
       <h1>Projects Page</h1>
-    </PageBody>
+    </Container>
   );
 }

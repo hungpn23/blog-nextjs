@@ -1,4 +1,4 @@
-import { PageBody } from "@/components/layouts/page-body";
+import { Container } from "@/components/layouts/container";
 
 export default async function PostDetailPage({
   params,
@@ -7,5 +7,5 @@ export default async function PostDetailPage({
 }) {
   const { slug } = await params;
 
-  return <PageBody>{slug}</PageBody>;
+  return <Container>{slug}</Container>;
 }

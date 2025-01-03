@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Inconsolata } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ContentContainer } from "@/components/layouts/content-container";
+// import { ContentContainer } from "@/components/layouts/content-container";
 import { Header } from "@/components/layouts/header";
 import { Footer } from "@/components/layouts/footer";
 import { cn } from "@/lib/utils";
@@ -44,10 +44,12 @@ export default function RootLayout({
               <Header />
               <main className="flex-grow">
                 <NuqsAdapter>
-                  <ContentContainer>
+                  <div className="py-16 sm:py-24">
+                    {/* <ContentContainer> */}
                     {children}
                     <Toaster />
-                  </ContentContainer>
+                    {/* </ContentContainer> */}
+                  </div>
                 </NuqsAdapter>
               </main>
               <Footer />

@@ -1,7 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { MobileNav } from "./mobile-nav";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export function MobileMenu() {
   return (
@@ -17,6 +23,9 @@ export function MobileMenu() {
         </Button>
       </SheetTrigger>
       <SheetContent side="right" aria-label="Mobile navigation menu">
+        <VisuallyHidden>
+          <SheetTitle>Menu</SheetTitle>
+        </VisuallyHidden>
         <MobileNav />
       </SheetContent>
     </Sheet>

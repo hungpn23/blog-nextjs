@@ -1,10 +1,10 @@
+import { Container } from "@/components/layouts/container";
 import Image from "next/image";
 import Link from "next/link";
-import { PageBody } from "@/components/layouts/page-body";
 
 export default function Home() {
   return (
-    <PageBody>
+    <Container>
       <div className="mb-12 flex flex-col items-center gap-4">
         <Image
           src="/logo.jpg"
@@ -132,6 +132,6 @@ export default function Home() {
           </ul>
         </section>
       </div>
-    </PageBody>
+    </Container>
   );
 }
